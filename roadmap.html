@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution Roadmap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-6">
+  <div class="max-w-4xl mx-auto">
+    <button onclick="window.location.href='index.html'" class="mb-6 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-gray-700 flex items-center">
+      ← Back to Priorities
+    </button>
+    <div id="priorityHeader" class="mb-8"></div>
+    <div id="roadmapTimeline"></div>
+  </div>
+
+  <script>
+    // Priority metadata
+    const priorities = {
+      1: {
+        title: "Complete fix of pending irritations and improve app experience",
+        description: "App onboarding activation and retention should be smooth. Focus on removing friction and improving user experience."
+      },
+      3: {
+        title: "Roll-out utility card",
+        description: "Launch and scale the utility card product, ensuring compliance and market readiness."
+      }
+    };
+
+    // Roadmap milestones with details
+    const roadmapData = {
+      1: [
+        {
+          title: "Onboarding UXCam",
+          owner: "Product Team",
+          status: "Completed",
+          notes: "Analytics for onboarding flows integrated.",
+          icon: "📊"
+        },
+        {
+          title: "Integrate Dojah",
+          owner: "Engineering",
+          status: "In Progress",
+          notes: "Customer App Onboarding Optimization",
+          icon: "🔒"
+        },
+        {
+          title: "GTM Strategy with CCO",
+          owner: "Marketing",
+          status: "Planned",
+          notes: "Go-to-market plan to be finalized with Chief Commercial Officer.",
+          icon: "🚀"
+        },
+      ],
+      3: [
+        {
+          title: "Utility Card Vendor Onboarding",
+          owner: "Partnerships",
+          status: "In Progress",
+          notes: "Negotiations with vendors underway.",
+          icon: "🤝"
+        },
+        {
+          title: "Regulatory Approval",
+          owner: "Compliance",
+          status: "Planned",
+          notes: "Awaiting approval from regulators.",
+          icon: "📄"
+        },
+        {
+          title: "National Rollout",
+          owner: "Operations",
+          status: "Planned",
+          notes: "Full launch across all regions.",
+          icon: "🌍"
+        }
+      ]
+    };
+
+    // Status color mapping
+    const statusColors = {
+      "Completed": "bg-green-100 text-green-700",
+      "In Progress": "bg-yellow-100 text-yellow-700",
+      "Planned": "bg-gray-100 text-gray-700"
+    };
+
+    // Get ID from query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+
+    // Render priority header
+    const header = document.getElementById("priorityHeader");
+    if (priorities[id]) {
+      header.innerHTML = `
+        <h2 class="text-xl font-bold mb-2">${priorities[id].title}</h2>
+        <p class="text-gray-600 mb-4">${priorities[id].description}</p>
+      `;
+    } else {
+      header.innerHTML = `<h2 class="text-xl font-bold mb-2">Unknown Priority</h2>`;
+    }
+
+    // Render roadmap timeline
+    const timeline = document.getElementById("roadmapTimeline");
+    if (roadmapData[id]) {
+      timeline.innerHTML = `
+        <div class="relative border-l-4 border-blue-200 pl-8">
+          ${roadmapData[id].map((step, idx) => `
+            <div class="mb-8 flex items-start">
+              <div class="absolute -left-7 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white text-xl font-bold shadow">${step.icon}</div>
+              <div class="ml-6">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg font-semibold">${step.title}</span>
+                  <span class="px-2 py-1 rounded ${statusColors[step.status]} text-xs font-medium ml-2">${step.status}</span>
+                </div>
+                <div class="text-sm text-gray-500 mb-1">Owner: ${step.owner}</div>
+                <div class="text-sm text-gray-600">${step.notes}</div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    } else {
+      timeline.innerHTML = `<p class="text-center text-gray-600">No roadmap available for this priority.</p>`;
+    }
+  </script>
+</body>
+</html>

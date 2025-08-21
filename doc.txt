@@ -1,0 +1,141 @@
+📖 Project Documentation – Strategic Priorities Roadmap Website
+1. Overview
+This is a lightweight static website built with HTML, CSS, and Vanilla JavaScript (no frameworks, no build tools).
+It displays a list of strategic priorities, each with:
+    A blue "Active" button → navigates to a roadmap page.
+    A grey "Inactive" button → disabled/un-clickable.
+Each roadmap is displayed using cards connected in sequence (like a flow of tasks). 
+The roadmap "components" are simple HTML card structures that can be reused across different strategies.
+
+2. File Structure
+project-root/
+│── index.html        # Homepage: lists strategic priorities
+│── roadmap.html      # Roadmap template page (reusable)
+│── css/
+│   └── style.css     # All styling (buttons, cards, roadmap layout)
+│── js/
+│   └── script.js     # Handles button clicks, navigation, roadmap rendering
+│── assets/
+    └── (images, logos, etc.)
+
+3. How It Works
+(a) Homepage (index.html)
+Displays a list of strategic priorities.
+Each row has two buttons:
+    Active (blue) → clickable, links to roadmap.html and passes data (roadmap steps).
+    Inactive (grey) → disabled (unclickable).
+    Example:
+    <div class="priority">
+        <h3>Customer Onboarding</h3>
+        <button class="btn active" onclick="openRoadmap('onboarding')">Active</button>
+        <button class="btn inactive" disabled>Inactive</button>
+    </div>
+
+(b) Roadmap Page (roadmap.html)
+A roadmap container dynamically loads task cards from JavaScript.
+Each roadmap is just an array of steps rendered as cards with arrows.
+Example Layout:
+    [SOLUTION ROADMAP]
+    [Onboarding UXcam] --> [Integrate Dojah] --> [GTM Strategy with CCO]
+
+(c) JavaScript (script.js)
+openRoadmap(id):
+    Stores which roadmap to load (via localStorage or URL params).
+    Redirects user to roadmap.html.
+renderRoadmap():
+    Reads the roadmap ID.
+    Loads the correct roadmap data from a predefined object.
+    Creates HTML cards dynamically and injects into the page.
+
+Example Data in script.js:
+const roadmaps = {
+  onboarding: [
+    "Onboarding UXcam",
+    "Integrate Dojah",
+    "GTM Strategy with CCO"
+  ],
+  analytics: [
+    "Onboard Mixpanel",
+    "Integrate Gamification Engine"
+  ]
+};
+
+function openRoadmap(id) {
+  localStorage.setItem("currentRoadmap", id);
+  window.location.href = "roadmap.html";
+}
+
+function renderRoadmap() {
+  const id = localStorage.getItem("currentRoadmap");
+  const container = document.getElementById("roadmapContainer");
+
+  if (!id || !roadmaps[id]) {
+    container.innerHTML = "<p>No roadmap available.</p>";
+    return;
+  }
+
+  roadmaps[id].forEach((step, index) => {
+    const card = document.createElement("div");
+    card.className = "roadmap-card";
+    card.innerText = step;
+    container.appendChild(card);
+
+    if (index < roadmaps[id].length - 1) {
+      const arrow = document.createElement("span");
+      arrow.className = "arrow";
+      arrow.innerHTML = "&#8594;"; // →
+      container.appendChild(arrow);
+    }
+  });
+}
+
+(d) CSS (style.css)
+Button styles:
+    Blue for active
+    Grey (disabled, unclickable) for inactive
+Roadmap layout:
+    Cards with rounded corners, shadow, padding
+    Arrows (→) between cards
+    Responsive design (wraps on mobile)
+Example:
+
+.btn.active {
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.btn.inactive {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.roadmap-card {
+  display: inline-block;
+  padding: 12px 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  margin: 10px;
+}
+
+.arrow {
+  margin: 0 10px;
+  font-size: 24px;
+}
+
+4. Developer Notes
+Reusable "components": Roadmap steps are just strings in script.js. Adding a new roadmap = add a new key-value pair.
+Scalability: Can add more roadmap pages or fetch data from JSON/API later.
+Routing: Purely client-side (via localStorage). No backend needed.
+Extending:
+    Add images/icons inside roadmap cards.
+    Add categories or deadlines for each step.
+    Export roadmaps as PDF/Excel.
+
+5. Example Usage
+User opens index.html → sees priorities list.
+Clicks Active → navigates to roadmap page.
+Roadmap cards appear in sequence with arrows.
+Can return to homepage anytime.

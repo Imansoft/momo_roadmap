@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOMO Strategic Transformation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-6xl">
+    <h1 class="text-2xl font-bold text-center mb-6">MOMO Q3 Strategic Priorities</h1>
+    <div class="overflow-x-auto bg-white shadow-md rounded-2xl">
+      <table class="w-full border-collapse">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold">Strategic Priority</th>
+            <th class="text-left px-4 py-3 font-semibold">Technical Meaning</th>
+            <th class="text-center px-4 py-3 font-semibold">Plan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Active Row -->
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Complete fix of pending irritations and improve app experience</td>
+            <td class="px-4 py-3">App onboarding activation and retention should be smooth</td>
+            <td class="px-4 py-3 text-center">
+              <button onclick="goToRoadmap(1)" 
+                class="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">
+                Active
+              </button>
+            </td>
+          </tr>
+
+          <!-- Example Inactive Row -->
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Commence inward multi-switch routing</td>
+            <td class="px-4 py-3">[ ... ]</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Roll-out utility card</td>
+            <td class="px-4 py-3">[ ... ]</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <!-- Other rows stay the same but with Inactive buttons -->
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Drive rural penetration for qualitative growth</td>
+            <td class="px-4 py-3">Increase MAU with rural indigens</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Optimize and scale account opening with other MNOs</td>
+            <td class="px-4 py-3">Create nice Onboarding and GTM for Other MNOs</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Improve retention and reduce churn</td>
+            <td class="px-4 py-3">Gamification (Loyalty Programmes and more)</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Expand Portfolio of Services Through Strategic Partnership</td>
+            <td class="px-4 py-3">Onboard Strategic Partners</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Prioritize advance services and deepen engagement with target segments</td>
+            <td class="px-4 py-3">[ ... ]</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-3">Unlock and retain MTN Ecosystem opportunities to drive treasury income</td>
+            <td class="px-4 py-3">[ ... ]</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="px-4 py-3">Enhance service offerings to SMEs through value chain-driven digitization</td>
+            <td class="px-4 py-3">[ ... ]</td>
+            <td class="px-4 py-3 text-center">
+              <button class="px-3 py-1 bg-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed" disabled>Inactive</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JS to handle redirects -->
+  <script>
+    function goToRoadmap(id) {
+      // navigate to roadmap page with an id
+      window.location.href = "roadmap.html?id=" + id;
+    }
+  </script>
+</body>
+</html>
