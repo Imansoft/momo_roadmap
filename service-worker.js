@@ -4,6 +4,7 @@ const urlsToCache = [
   './index.html',
   './roadmap.html',
   './manifest.json',
+  './assets/icon1.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
   // Add your CSS, JS, and icon files here

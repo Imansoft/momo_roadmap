@@ -3,8 +3,6 @@
   "short_name": "Momo Solution Roadmap",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f9fafb",
-  "theme_color": "#2563eb",
   "description": "Momo Solution Roadmap for Q3 2025",
   "icons": [
     {
@@ -15,6 +13,10 @@
     {
       "src": "assets/icon-512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon1.png",
       "type": "image/png"
     }
   ]
